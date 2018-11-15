@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 //import App from './App';
 
@@ -5,19 +6,46 @@ import React, { Component } from 'react';
 class Book extends Component {
     render () {
 
-      let book={book};
+
+      {/*let { book } = this.props;
+      let thumbnail = (this.props.book.imageLinks && this.props.book.imageLinks.smallThumbnail)
+      ? this.props.book.imageLinks.smallThumbnail
+     : '';
+    */}
+
+     {/*let image = (this.props.book.imageLinks && this.props.book.imageLinks.smallThumbnail)
+      ? this.props.book.imageLinks.smallThumbnail
+     : ''; */}
+
+      
+      {/* let book={book};
       let coverImgURL = book.imageLinks
       ? book.imageLinks.smallThumbnail
       : "http://via.placeholder.com/128x190";
+      : "http://books.google.com/books/content?id=jAUODAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
+
+
      //let displayedThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
 
-        return (
-    <div className="book">
-    <div className="book-top">    
+    */}
     
     
+   
+          return (
+            
+              <div className="book">
+                <div className="book-top">
+                  <div className="book-cover" style={{
+                    width: 128,
+                    height: 193,
+                    backgroundImage: `url("${this.props.imageLinks ? this.props.imageLinks.thumbnail : ''}")`
+                  }}></div>
+   
+   
+   {/*<div className="book">
+    <div className="book-top">
     <div className="book-cover" style={{ width: 128, height: 193, 
-           backgroundImage: 'url("${displayedThumbnail}")' }}></div>      
+    backgroundImage: 'url("${thumbnail}")' }}></div>    */}
            
                  
            
@@ -41,6 +69,7 @@ class Book extends Component {
     <div className="book-title">{this.props.book.title}</div>
     <div className="book-authors">{this.props.book.authors}</div>
   </div>
+  
     );
   }
 }
