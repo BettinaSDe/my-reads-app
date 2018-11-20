@@ -1,17 +1,18 @@
 
 
 
-// https://medium.com/@chang_yan/a-bit-more-about-react-suspense-2e05cc4e9ef8
+// I am trying to learn this from https://medium.com/@chang_yan/a-bit-more-about-react-suspense-2e05cc4e9ef8
 
 import React from 'react';
+import Book from './Book';
 //import {createResource, createCache} from 'simple-cache-provider';
 //import React, { Component } from 'react';
 
 
 
 const cache = createCache()
-const bookResource = createResource((_BooksAPI) => {
-  return fetch('${BookID}/${bookId}')
+const bookResource = createResource((book) => {
+  return fetch('${book-cover}/${book-cover}')
 })
 
 
@@ -22,14 +23,14 @@ class Spinner extends React.Component {
 
   return (
     <React.Timeout ms={1000} fallback={<Spinner />}>
-      <BookID bookId={1} />
+      <book-top book-top={1} />
     </React.Timeout>
   )
 
-async function BookID({bookId}) {
-  const book = await bookResource.read(cache, bookId)
+async function bookTop ({book}) {
+  const bookhead = await book(cache, book)
   return (
-    <div>{book.ID}</div>
+    <div>{book}</div>
   )
   }
 }}
