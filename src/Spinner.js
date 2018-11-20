@@ -10,7 +10,7 @@ import React from 'react';
 
 
 const cache = createCache()
-const bookResource = createResource((bookId) => {
+const bookResource = createResource((_BooksAPI) => {
   return fetch('${BookID}/${bookId}')
 })
 
