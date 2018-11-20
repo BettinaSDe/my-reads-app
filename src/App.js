@@ -1,9 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import MainPage from './MainPage';
-import SearchPage from './SearchPage';
-import './App.css'
+import BookScreen from './BookScreen';
+import BookTrigger from './BookTrigger';
+import './App.css';
+//import {createResource, createCache} from 'simple-cache-provider';
+import Spinner from './Spinner';
 
 class App extends React.Component {
   
@@ -19,14 +21,8 @@ state = {
 books: []  
 }     
 
-componentDidMount() {
-BooksAPI.getAll().then((books) => {
-  this.setState({ books: books })
-})
-}
 
-
-moveShelf = (book, shelf) => {
+shelfUpdated = (book, shelf) => {
   BooksAPI.update(book, shelf);
 
   BooksAPI.getAll().then((books) => {
@@ -35,26 +31,48 @@ moveShelf = (book, shelf) => {
 }
 
 
+componentDidMount() {
+BooksAPI.getAll().then((books) => {
+  this.setState({ books: books })
+})
+}
+
+
+
+
+
+
+
+
+
   render() {
    console.log(this.state.books);
 
     return (
       <div className="app">
 
+
+
+
+
+
+
+<Route exactPath="/my-reads-bettinasde/search" render={() => (
+        <BookTrigger
+        shelfUpdated={this.shelfUpdated}
+        books={this.props.books}
+        />         
+      )} />
+
       <Route exactPath="/my-reads-bettinasde/main" render={() => (
-        <MainPage
+        <BookScreen
     books={this.state.books}
-    moveShelf={this.moveShelf}
+    shelfUpdated={this.shelfUpdated}
     />
       )} />
 
 
-<Route exactPath="/my-reads-bettinasde/search" render={() => (
-        <SearchPage
-        moveShelf={this.moveShelf}
-        books={this.props.books}
-        />         
-      )} />
+
  
       </div>
     )
