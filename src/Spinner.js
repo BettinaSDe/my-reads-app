@@ -1,4 +1,7 @@
 
+//I am trying to understand REACT SUSPENSE based on this: https://medium.com/@chang_yan/a-bit-more-about-react-suspense-2e05cc4e9ef8 
+
+
 import React from 'react';
 import {createResource, createCache} from './simple-cache-provider';
 
