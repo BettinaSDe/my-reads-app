@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-//import App from './App';
+
 
 
 class Book extends Component {
@@ -8,7 +8,6 @@ class Book extends Component {
 
 
    
-    
     
     
    
@@ -29,8 +28,8 @@ class Book extends Component {
       <div className="book-shelf-changer">
     
        <select 
-        onChange={(event) => this.props.shelfUpdated(
-          this.props.book, event.target.value
+        onChange={(e) => this.props.shelfUpdated(
+          this.props.book, e.target.value
         )} 
         value={this.props.book.shelf}
                 
