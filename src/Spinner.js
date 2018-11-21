@@ -1,16 +1,16 @@
 
 import React from 'react';
-import {createResource, createCache} from 'simple-cache-provider';
+import {createResource, createCache} from './simple-cache-provider';
 
 
 
 
 
-const cache = createCache()
+const cache = createCache();
 const bookResource = createResource((book) => {
-  return fetch('${thumbnail}/${thumbnail}')
-})
-const thumbnail = ('${thumbnail}')
+  return fetch('${thumbnail}/${thumbnail}');
+});
+const thumbnail = ('${thumbnail}');
 
 
 
