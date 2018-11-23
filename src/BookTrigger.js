@@ -9,12 +9,15 @@ import * as BooksAPI from './BooksAPI';
 
 
 class BookTrigger extends Component {
-  state = {
+constructor() {
+  super();
+  this.state = {
     query: '',
     calledBooks: []
-  }
+  };
+}
 
- 
+
   updateSearchedBooks = (query) => {
     if (query) {
   BooksAPI.search(query).then((calledBooks) => {

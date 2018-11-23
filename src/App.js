@@ -10,19 +10,21 @@ import './App.css';
 
 
 class App extends React.Component {
-      
+      constructor() {
+        super();
 
-state = {
+this.state = {
 books: []  
+};
 }     
 
+shelfUpdated = (book,shelf) => {
 
-shelfUpdated = (book, shelf) => {
-  BooksAPI.update(book, shelf);
-
+BooksAPI.update(book, shelf).then(() => {
   BooksAPI.getAll().then((books) => {
-    this.setState({ books: books })
+    this.setState({ books: books });
   })
+});
 }
 
 
@@ -61,12 +63,6 @@ BooksAPI.getAll().then((books) => {
     )
   }
 }
-
-
-
-
-
-
 
 
 
