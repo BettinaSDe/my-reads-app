@@ -2,14 +2,14 @@
 # MyReads 
 
 This is a Udacity REACT student project. The goal was to convert a static example of the CSS and HTML markup that may be used into a dynamic Create-React-App (CRA).
-This is my development code for project 7 (*MyReads: A Book Lending App*) from Udacity's  [Front-End Nanodegree] program. It has not yet been built nor deployed with node.js.  
+This is my development code for project 7 (*MyReads: A Book Lending App*) from Udacity's Front End Web Developer Nanodegree.
 Find starter code and more information [HERE
 ](https://github.com/udacity/reactnd-project-myreads-starter)
 
 
 ---
-To start this Create-React-App (CRA): open this App with "node.js", enter "cd my-reads-bettinasde". 
-Once node.js serves this CRA folder, enter "npm install" for installing all project dependencies. Then start the development server with "npm start". You will need node's "RegExp" package for the Search page. Open the localhost:3000 to view the App in development mode on the local server. 
+To start this Create-React-App (CRA): download the repository locally or clone it, open this App with "node.js", enter "cd my-reads-app". 
+Once node.js serves this CRA folder, enter "npm install" for installing all project dependencies. Then start the development server with "npm start". Open the localhost:3000 to view the App in development mode on the local server.
 
 ---
 
