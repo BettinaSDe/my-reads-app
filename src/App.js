@@ -7,10 +7,10 @@ import './App.css';
 
 
 
+
+
 class App extends React.Component {
-  
-    
-    
+      
 
 state = {
 books: []  
@@ -34,23 +34,11 @@ BooksAPI.getAll().then((books) => {
 
 
 
-
-
-
-
-
-
   render() {
    console.log(this.state.books);
 
     return (
       <div className="app">
-
-
-
-
-
-
 
 <Route exactPath="/my-reads-bettinasde/search" render={() => (
         <BookTrigger
@@ -73,5 +61,13 @@ BooksAPI.getAll().then((books) => {
     )
   }
 }
+
+
+
+
+
+
+
+
 
 export default App;

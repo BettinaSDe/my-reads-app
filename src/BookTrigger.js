@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 import Book from './Book';
 import * as BooksAPI from './BooksAPI';
+//import { Provider as AlertProvider } from 'react-alert';
+//import AlertTemplate from 'react-alert-template-basic';
+
+
 
 
 class BookTrigger extends Component {
@@ -16,6 +20,8 @@ class BookTrigger extends Component {
   BooksAPI.search(query).then((calledBooks) => {
     if (calledBooks.error) {
       this.setState({ calledBooks: [] });
+      this.props.alert.show(<div style={{ color: 'blue' }}>Book not found</div>)
+
     } else {
     this.setState({ calledBooks: calledBooks });
     }
