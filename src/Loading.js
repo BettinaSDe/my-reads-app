@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const isLoading = null;
+const isLoading = this.props.book.imageLinks.thumbnail;
 const error = null;
 
 class Loading extends React.Component {
@@ -13,8 +13,7 @@ class Loading extends React.Component {
 
 render() {
 
-  console.log(this.props.book.imageLinks.thumbnail);
-      
+  
   
 
   if (error) {
