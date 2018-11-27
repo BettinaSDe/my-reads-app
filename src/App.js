@@ -6,6 +6,7 @@ import BookTrigger from './BookTrigger';
 import './App.css';
 
 
+//according to my mock-up (see "resources" in Github, the "App" components holds the global state.)
 
 
 
@@ -42,14 +43,14 @@ BooksAPI.getAll().then((books) => {
     return (
       <div className="app">
 
-<Route exactPath="/my-reads-bettinasde/search" render={() => (
+<Route exact Path="/my-reads-bettinasde/search" render={() => (
         <BookTrigger
         shelfUpdated={this.shelfUpdated}
         books={this.props.books}
         />         
       )} />
 
-      <Route exactPath="/my-reads-bettinasde/" render={() => (
+      <Route exact Path="/my-reads-bettinasde/" render={() => (
         <BookScreen
     books={this.state.books}
     shelfUpdated={this.shelfUpdated}
