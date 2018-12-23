@@ -1,33 +1,45 @@
-import React from 'react';
+//import React from 'react';
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import BookScreen from './BookScreen';
-import BookTrigger from './BookTrigger';
-import './App.css';
+import MainPage from './MainPage';
+import SearchPage from './SearchPage';
+import './App.css'
 
 
-//according to my mock-up (see "resources" in Github, the "App" components holds the global state.)
 
+{/*
+class Cover extends Component {
+  render() {
+    return (
+
+
+      <img className="Cover"
+        src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
+        alt={this.props.book.imageLinks} />
+    );
+  }
+};
+*/}
+
+
+export function Cover(props) {
+  return (<div>
+    <img className="Cover" src={`url("${props.book.imageLinks ? 
+      props.book.imageLinks.thumbnail : ''}")`} 
+      alt={'props.book.imageLinks'} />
+  </div>);
+}
+;
 
 
 class App extends React.Component {
-      constructor() {
-        super();
+  
+    
 
-this.state = {
+state = {
 books: []  
-};
 }     
-
-shelfUpdated = (book,shelf) => {
-
-BooksAPI.update(book, shelf).then(() => {
-  BooksAPI.getAll().then((books) => {
-    this.setState({ books: books });
-  })
-});
-}
-
 
 componentDidMount() {
 BooksAPI.getAll().then((books) => {
@@ -36,6 +48,14 @@ BooksAPI.getAll().then((books) => {
 }
 
 
+moveShelf = (book, shelf) => {
+  BooksAPI.update(book, shelf);
+
+  BooksAPI.getAll().then((books) => {
+    this.setState({ books: books })
+  })
+}
+
 
   render() {
    console.log(this.state.books);
@@ -43,17 +63,18 @@ BooksAPI.getAll().then((books) => {
     return (
       <div className="app">
 
-<Route exact Path="/my-reads-bettinasde/search" render={() => (
-        <BookTrigger
-        shelfUpdated={this.shelfUpdated}
+
+<Route exactPath="/my-reads-bettinasde/search" render={() => (
+        <SearchPage
+        moveShelf={this.moveShelf}
         books={this.props.books}
         />         
       )} />
 
-      <Route exact Path="/my-reads-bettinasde/" render={() => (
-        <BookScreen
+      <Route exactPath="/my-reads-bettinasde/main" render={() => (
+        <MainPage
     books={this.state.books}
-    shelfUpdated={this.shelfUpdated}
+    moveShelf={this.moveShelf}
     />
       )} />
 
@@ -65,6 +86,13 @@ BooksAPI.getAll().then((books) => {
   }
 }
 
-
-
 export default App;
+
+
+/**
+     * TODO: Instead of using this state variable to keep track of which page
+     * we're on, use the URL in the browser's address bar. This will ensure that
+     * users can use the browser's back and forward buttons to navigate between
+     * pages, as well as provide a good URL they can bookmark and share.
+     */
+
