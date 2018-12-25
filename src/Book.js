@@ -2,7 +2,6 @@
 import React, { Component} from 'react';
 import Cover from './Cover';
 
-
  
 
 
@@ -27,29 +26,14 @@ function Authors(props) {
 class Book extends Component {
     render() {
 
-
-      
       const bookObject = {
         
         imageLinks: {
-          thumbnail: 'http://via.placeholder.com/128x190'
-        }
-      }
-      
-      // imageLinks: 'this.props.book.cover.imageLinks',
+          thumbnail: (`${this.props.book.imageLinks.thumbnail}`)
+          }
+    }
 
-        {/*< div >
-        <Cover
-          img
-          className="Cover"
-          src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
-          alt={this.props.book.imageLinks}
-
-        />
-
-  </div >
-        */}
-      
+        
         
          
         
@@ -60,17 +44,16 @@ class Book extends Component {
       
       <div className="book-top">
 
-        <div>
+        <div className="Title">
           <Title title={this.props.book.title} /> 
          </div>
 
-        <div>
+        <div className="Authors">
           <Authors authors={this.props.book.authors} /> 
         </div>
 
-        <div>
-          <h2>{bookObject.cover}</h2>
-          <Cover book={bookObject} />
+        <div>          
+          <Cover book={bookObject} />                  
         </div> 
 
 
@@ -106,7 +89,10 @@ class Book extends Component {
 export default Book; 
 
 
-{/* commment from co-student: 
+{/* 
+   // <h2>{bookObject.cover}</h2>
+  
+  commment from co-student: 
   two ways: either use img element with src attribute, then img src has to be exact without any additional methods, only ternary operator with literal. Uff. If you want to use div element
   and set attribute style and object with {{cover: 'url....}}  literal here with ternary operator. 
 
@@ -145,6 +131,17 @@ title: "The Cuckoo's Calling"
 
 */}
 
+{/*< div >
+        <Cover
+          img
+          className="Cover"
+          src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
+          alt={this.props.book.imageLinks}
+
+        />
+
+  </div >
+        */}
 
 
 {/*
