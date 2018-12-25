@@ -36,7 +36,7 @@ class Book extends Component {
         }
       }
       
-      // imageLinks: '+ this.props.book.cover.imageLinks +',
+      // imageLinks: 'this.props.book.cover.imageLinks',
 
         {/*< div >
         <Cover
