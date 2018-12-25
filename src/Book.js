@@ -58,7 +58,7 @@ class Book extends Component {
     return (
 
       
-      <div>
+      <div className="book-top">
 
         <div>
           <Title title={this.props.book.title} /> 
