@@ -1,18 +1,9 @@
 
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import Cover from './Cover';
-import * as BooksAPI from './BooksAPI'
 
 
-
-//const bookObject = Cover;
-const bookObject = {
-  
-  imageLinks: {
-    thumbnail: 'http://via.placeholder.com/128x190'
-  }
-}
-
+ 
 
 
 
@@ -35,6 +26,35 @@ function Authors(props) {
 // calling the component
 class Book extends Component {
     render() {
+
+
+      
+      const bookObject = {
+        
+        imageLinks: {
+          thumbnail: 'http://via.placeholder.com/128x190'
+        }
+      }
+      
+      // imageLinks: '+ this.props.book.cover.imageLinks +',
+
+        {/*< div >
+        <Cover
+          img
+          className="Cover"
+          src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
+          alt={this.props.book.imageLinks}
+
+        />
+
+  </div >
+        */}
+      
+        
+         
+        
+
+
     return (
 
       
@@ -52,6 +72,8 @@ class Book extends Component {
           <h2>{bookObject.cover}</h2>
           <Cover book={bookObject} />
         </div> 
+
+
 
         <div className="book-shelf-changer">
 
@@ -77,14 +99,10 @@ class Book extends Component {
     
 
     );
-    
-
+    }
   }
-};
 
-
-
-
+         
 export default Book; 
 
 
@@ -93,83 +111,6 @@ export default Book;
   and set attribute style and object with {{cover: 'url....}}  literal here with ternary operator. 
 
     */}
-
-{/*}
-class Book extends Component {
-  render() {
-    return (
-      <div>
-        <h2>{bookObject.title}</h2>
-        <Cover book={bookObject} />
-      </div>
-    )
-  }
-}
-
-      
-      
-
-{/*<div>
-<Cover cover={this.props.book.cover} />   
-</div> /}
-
-</div>
-
-   
-
-{/*<div>
-  <Cover 
-        img
-        className="Cover"
-            src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
-            alt={this.props.book.imageLinks}
-          
-          />
-
-  </div>
-  
- {/*} cover={
-          <img
-            src={`url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''}")`}
-            // alt={props.book.imageLinks}
-          />}
-</div>
-
-
- */}
-    {/*}
-        <div> 
-          <img src=
-       {{Cover:`url("${this.props.book.imageLinks.thumbnail ? this.props.book.imageLinks.thumbnail : ''}")`
-        }}/>
-        </div>   
-      */}
-
-{/*imageLinks:
-'`url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : "")`'
-
-
-
-
-
-
-
-
-{/*
-        <div className="Cover" style={{
-       
-        backgroundImage: `url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''}")`
-           }} />    
-
-          */}
-
-      
-
-         
- 
-
-
-
 
 
 {/* looking at the external API driving helps me to code this functionally 
@@ -203,15 +144,6 @@ title: "The Cuckoo's Calling"
 
 
 */}
-
-
-
-{/*function book-shelf-changer(props) -- > write another eventlistener method */}
-
-
-
-
-
 
 
 

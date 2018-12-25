@@ -8,29 +8,7 @@ import './App.css'
 
 
 
-{/*
-class Cover extends Component {
-  render() {
-    return (
 
-
-      <img className="Cover"
-        src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
-        alt={this.props.book.imageLinks} />
-    );
-  }
-};
-*/}
-
-
-export function Cover(props) {
-  return (<div>
-    <img className="Cover" src={`url("${props.book.imageLinks ? 
-      props.book.imageLinks.thumbnail : ''}")`} 
-      alt={'props.book.imageLinks'} />
-  </div>);
-}
-;
 
 
 class App extends React.Component {
