@@ -20,10 +20,4 @@ class Cover extends Component {
 export default Cover;
 
 
-{/*}
-const Cover = props => <img src={props.book.imageLinks ? props.book.imageLinks.thumbnail : ''}
-    alt={'imageLinks.whatEverIsInThere'} />
-
-export default Cover;
-*/}
 

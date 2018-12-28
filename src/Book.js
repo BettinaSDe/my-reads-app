@@ -1,16 +1,14 @@
-
-import React, { Component} from 'react';
+import React, { Component } from 'react';
+import Fragment  from 'react';
 import Cover from './Cover';
 
- 
+
 
 
 
 function Title(props) {
-  // make sure to return JSX
   return (
     <div>{props.title}</div>
-    /* translates to <div>bar</div> */
   )
 };
 
@@ -22,50 +20,53 @@ function Authors(props) {
 };
 
 
-// calling the component
-class Book extends Component {
-    render() {
 
-      const bookObject = {
-        
-        imageLinks: {
-          thumbnail: (`${this.props.book.imageLinks.thumbnail}`)
-          }
+class Book extends Component {
+  render() {
+
+    const bookObject = {
+
+      imageLinks: {
+        thumbnail: ((`${this.props.book.imageLinks.thumbnail}
+          ? {this.props.book.imageLinks.thumbnail: ''}`))
+      }
     }
 
-        
-        
-         
-        
 
+
+
+
+// I learned this shorthand React.Fragment syntax on: https://getstream.io/blog/react-fragments/ 
 
     return (
 
+      <div>
+      <React.Fragment>
+      <div className="book-top" />
+
+        <div className="Title" />
+          <Title title={this.props.book.title} />
+     
+
+        <div className="Authors" />
+          <Authors authors={this.props.book.authors} />
+     
+
+        
+          <div className="Cover" />
+          <Cover book={bookObject} />
       
-      <div className="book-top">
+       </React.Fragment>
 
-        <div className="Title">
-          <Title title={this.props.book.title} /> 
-         </div>
-
-        <div className="Authors">
-          <Authors authors={this.props.book.authors} /> 
-        </div>
-
-        <div>          
-          <Cover book={bookObject} />                  
-        </div> 
-
-
-
-        <div className="book-shelf-changer">
+     
+      <React.Fragment>
+        <div className="book-shelf-changer" />
 
           <select
-            onChange={(event) => this.props.moveShelf(
-              this.props.book, event.target.value
+            onChange={(e) => this.props.shelfChanger(
+              this.props.book, e.target.value
             )}
             value={this.props.book.shelf}
-
           >
             <option value="move" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
@@ -73,29 +74,34 @@ class Book extends Component {
             <option value="read">Read</option>
             <option value="none">None</option>
           </select>
-        </div>
+        </React.Fragment>
+      </div>
         
-           
-        
-        </div>
-
-    
 
     );
-    }
   }
+}
 
-         
-export default Book; 
+
+export default Book;
 
 
 {/* 
-   // <h2>{bookObject.cover}</h2>
+   
   
-  commment from co-student: 
-  two ways: either use img element with src attribute, then img src has to be exact without any additional methods, only ternary operator with literal. Uff. If you want to use div element
+  imageLink: 
+  two ways: either use img element with src attribute, then img src has to be exact without any additional methods, 
+  only ternary operator with literal. Uff. If you want to use div element
   and set attribute style and object with {{cover: 'url....}}  literal here with ternary operator. 
 
+  className="Cover"
+          src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
+          alt={this.props.book.imageLinks}
+
+
+          imageLinks: {
+        thumbnail: (`${this.props.book.imageLinks.thumbnail}`)
+          ? this.props.book.cover.imageLinks.thumbnail : ''
     */}
 
 
@@ -130,60 +136,3 @@ title: "The Cuckoo's Calling"
 
 
 */}
-
-{/*< div >
-        <Cover
-          img
-          className="Cover"
-          src={`url("${this.props.book.imageLinks ? this.props.book.cover.imageLinks.thumbnail : ''}")`}
-          alt={this.props.book.imageLinks}
-
-        />
-
-  </div >
-        */}
-
-
-{/*
-class Book extends Component {
-   render () {
-
-          return (
-            
-              
-                <div className="book">
-                <div className="book-top">
-                  <div className="book-cover" style={{
-                    width: 128,
-                    height: 193,}}> 
-                   {/*} backgroundImage: `url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''}")` }}></div>  */}
-                 
-                 {/*  backgroundImage={ backgroundImage } </div>
-
-                  book-title={bookTitle}
-                  book-authors={bookAuthors}
-                  
-                  */}
-
- 
-     
-             
-      {/* 
-      <div className="book-shelf-changer">
-    
-       <select 
-        onChange={(event) => this.props.moveShelf(
-          this.props.book, event.target.value
-        )} 
-        value={this.props.book.shelf}
-                
-        >
-          <option value="move" disabled>Move to...</option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
-          <option value="none">None</option>
-        </select>
-      </div>
-   
-        */}
