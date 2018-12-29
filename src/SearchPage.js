@@ -53,7 +53,7 @@ class SearchPage extends react.Component {
           <div className="search-books-input-wrapper" />
       
 
-      <div> 
+           <div> 
             <input
               type="text"
               placeholder="Search by title or author"
@@ -65,7 +65,7 @@ class SearchPage extends react.Component {
            
           
         
-<React.Fragment>
+      <React.Fragment>
         <div className="search-books-results" />
           <ol className="books-grid">
             {
@@ -104,81 +104,6 @@ export default SearchPage;
 
   {/*}
 
-  render() {
-    <React.Fragment>
-
-    {<search-books src={search-books} />}
-    {<search-books-bar src={search-books-bar} />}
-    {<search-books-input-wrapper src={search-books-input-wrapper} />}
-    {<search-books-result src={search-books-result} />}
-    {<books-grid src={books-grid} />}
-    </React.Fragment>
-     }
-      
-       
-    
-    
-      return() 
-        {
-          <React.Fragment> 
-              
-       <div>
-        <p>search-books</p>
-         <p>search-books-bar</p>
-
-            <Link to="/" className="close-search" >Close</Link>
-             <p>search-books-input-wrapper</p>
-
-
-              <div>
-                <input
-                type="text"
-                placeholder="Search by title or author"
-                value={this.state.query}
-                onChange={(e) => this.newSearch(e.target.value)}
-              />
-            </div>
-              
-            
-
-        
-      
-          <div>
-          <p search-books-results>
-            <ol books-grid>
-              {
-
-                this.state.searchedBooks.map(searchedBook => {
-
-                  return (
-
-                    <li key={searchedBook.id}>
-                      <Book
-                        book={searchedBook}
-                        shelfChanger={this.props.shelfChanger}
-
-                      />
-                    </li>
-                  );
-                }}
-              
-              
-           
-           </ol>
-          </p>
-          </div>
-
-          </React.Fragment>
-                };
-    
-    
-            
-               
-    export default SearchPage;
-
-
-              */}
-    
     
     
     
