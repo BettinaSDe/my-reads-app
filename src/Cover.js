@@ -4,7 +4,6 @@ import './App.css'
 
 
 
-// Cover.js
 class Cover extends Component {
     render() {
         console.log(this.props.book); // log out the prop passed to this component

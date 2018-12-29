@@ -42,18 +42,19 @@ shelfChanger = (book, shelf) => {
       <div className="app">
 
 
-<Route exactPath="/my-reads-bettinasde/search" render={() => (
-        <SearchPage
-        shelfChanger={this.shelfChanger}
-        books={this.props.books}
-        />         
+<Route path="/" exact render={() => (
+        <MainPage 
+        books={this.state.books}
+    shelfChanger={this.shelfChanger}
+          />
+                
       )} />
 
-      <Route exactPath="/my-reads-bettinasde/main" render={() => (
-        <MainPage
-    books={this.state.books}
-    shelfChanger={this.shelfChanger}
-    />
+      <Route path="/search" exact render={() => (
+        <SearchPage 
+      shelfChanger={this.shelfChanger}
+      books={this.props.books}
+          />
       )} />
 
 

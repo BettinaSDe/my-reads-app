@@ -34,9 +34,9 @@ class Book extends Component {
 
 
 
+// I learned this shorthand React.Fragment syntax on: https://getstream.io/blog/react-fragments/
 
 
-// I learned this shorthand React.Fragment syntax on: https://getstream.io/blog/react-fragments/ 
 
     return (
 
@@ -88,10 +88,25 @@ export default Book;
 
 {/* 
    
+
+
+
+  lass Book extends Component {
+    render() {
+
+        const bookObject = {
+
+          imageLinks: {
+            thumbnail: ((`${this.props.book.imageLinks.thumbnail}
+          ? {this.props.book.imageLinks.thumbnail: ''}`))
+          }
+        }
+
+
   
   imageLink: 
   two ways: either use img element with src attribute, then img src has to be exact without any additional methods, 
-  only ternary operator with literal. Uff. If you want to use div element
+  only ternary operator with literal. If you want to use div element
   and set attribute style and object with {{cover: 'url....}}  literal here with ternary operator. 
 
   className="Cover"
