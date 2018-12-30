@@ -1,10 +1,11 @@
 //import React from 'react';
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import MainPage from './MainPage';
 import SearchPage from './SearchPage';
-import './App.css'
+import './App.css';
+import ErrorBoundary from './ErrorBoundary'
 
 
 
@@ -12,12 +13,12 @@ import './App.css'
 
 
 class App extends React.Component {
-  
     
-
-state = {
+state = {  
 books: []  
 }     
+
+
 
 componentDidMount() {
 BooksAPI.getAll().then((books) => {
@@ -28,10 +29,11 @@ BooksAPI.getAll().then((books) => {
 
 shelfChanger = (book, shelf) => {
   BooksAPI.update(book, shelf);
+  book.shelf = shelf;
 
-  BooksAPI.getAll().then((books) => {
-    this.setState({ books: books })
-  })
+  this.setState(state => ({
+    books: state.books.filter(b =>b.id !== book.id).concat(book),
+  }));
 }
 
 
@@ -41,7 +43,7 @@ shelfChanger = (book, shelf) => {
     return (
       <div className="app">
 
-
+<ErrorBoundary>
 <Route path="/" exact render={() => (
         <MainPage 
         books={this.state.books}
@@ -50,12 +52,19 @@ shelfChanger = (book, shelf) => {
                 
       )} />
 
+  </ErrorBoundary>
+
+
+
+<ErrorBoundary>
       <Route path="/search" exact render={() => (
         <SearchPage 
       shelfChanger={this.shelfChanger}
       books={this.props.books}
           />
       )} />
+
+      </ErrorBoundary>
 
 
 
