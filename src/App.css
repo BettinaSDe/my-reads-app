@@ -27,7 +27,8 @@ body, .app {
 }
 
 .bookshelf {
-  padding: 0 10px 20px;
+  {/*padding: 0 10px 20px; */}
+  padding: 10px;
 }
 
 @media (min-width: 600px) {
@@ -122,21 +123,15 @@ body, .app {
 .book {
   width: 140px;
 }
-
-
-
-.Title {
-  font-size: 2em;
-  margin-top: 10px;  
-  padding: 20px 10px 0;
-  font-style: bold;
-  display: flex;
-  }
-
-
-.Authors {
-  color: #999;
+.book-title,
+.book-authors {
   font-size: 0.8em;
+}
+.book-title {
+  margin-top: 10px;
+}
+.book-authors {
+  color: #999;
 }
 
 .book-top {
@@ -169,17 +164,13 @@ body, .app {
 
 /* book cover */
 
-.Cover {
+.book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;  
-   width: 128;
-   height: 193;
-   position: center;
   }
   
-.Title {
+.book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
-
 }
