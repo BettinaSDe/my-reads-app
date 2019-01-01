@@ -6,17 +6,14 @@ import Book from './Book';
 
 
 
+
 class MainPage extends Component {
     render () {
       console.log(this.props.books);
 
         return (
-
-        <div>
-          <div className="open-search">
-            <Link to="/search">Search / Add a book</Link>
-          </div>
-        
+       
+       
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
@@ -44,10 +41,9 @@ class MainPage extends Component {
                     </ol>
                   </div>
                 </div>
-              </div>
-            </div>
+              
 
-            <div>
+           
               <div className="bookshelf">
                 <h2 className="bookshelf-title">Want to Read</h2>
                 <div className="bookshelf-books">
@@ -69,7 +65,7 @@ class MainPage extends Component {
                   </ol>
                 </div>
               </div>
-            </div>
+            
 
 
             <div className="bookshelf">
@@ -94,15 +90,15 @@ class MainPage extends Component {
             </div>
           </div>
         </div >
-         
+        < div className="open-search">
+          <Link to="/search">Search / Add a book</Link> 
+          </div>
+          </div>
          
         );
       }
     }
    
-          
-                  
-              
           
           
           export default MainPage; 
@@ -113,5 +109,5 @@ class MainPage extends Component {
 
 {/*
  I applied shorthand React.Fragment syntax as learned on: https://getstream.io/blog/react-fragments/ , 
-but Udacity reviewer discouraged usage in this context, since I am not integrating additional HTML elements here. So I removed it. */} 
-
+but Udacity reviewer discouraged usage in this context, since I am not integrating additional HTML elements here. 
+So I removed it. */} 

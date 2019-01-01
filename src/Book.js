@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Fragment  from 'react';
 import Cover from './Cover';
+import ErrorBoundary from './ErrorBoundary';
 
 
 
@@ -22,15 +22,30 @@ function Authors(props) {
 
 
 class Book extends Component {
+  
   render() {
+   
 
-    const bookObject = {
-
-      imageLinks: {
-        thumbnail: ((`${this.props.book.imageLinks.thumbnail}
-          ? {this.props.book.imageLinks.thumbnail: ''}`))
+       
+        const bookObject = {
+       
+      imageLinks: 
+       
+      { 
+        thumbnail: 
+       
+        ((`${this.props.book.imageLinks.thumbnail}
+          ? {this.props.book.imageLinks.thumbnail: ''}`)),
+           
+            
+      smallThumbnail: ((`${this.props.book.imageLinks.smallThumbnail}
+          ? {this.props.book.imageLinks.smallThumbnail: ''}`))
+             
       }
+       
     }
+    
+   
 
 
 
@@ -39,27 +54,31 @@ class Book extends Component {
 
 
     return (
+      <ErrorBoundary>
 
       <div>
       <React.Fragment>
-      <div className="book-top" />
+      {/*<div className="book-top" />  */}
 
-        <div className="Title" />
+        <div className="book-title" />
           <Title title={this.props.book.title} />
      
 
-        <div className="Authors" />
+        <div className="book-authors" />
           <Authors authors={this.props.book.authors} />
      
 
-        
-          <div className="Cover" />
+        <ErrorBoundary>
+          <div className="book-cover" />
           <Cover book={bookObject} />
-      
-       </React.Fragment>
+        </ErrorBoundary>
+       
+       
 
-     
-      <React.Fragment>
+
+
+
+
         <div className="book-shelf-changer" />
 
           <select
@@ -76,7 +95,7 @@ class Book extends Component {
           </select>
         </React.Fragment>
       </div>
-        
+       </ErrorBoundary>
 
     );
   }
