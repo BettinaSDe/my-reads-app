@@ -19,37 +19,39 @@ function Authors(props) {
   )
 };
 
+function Changer(props) {
+  
+return (
+<div>{props.shelfchanger}</div>
+)
+};
+
 
 
 class Book extends Component {
   
   render() {
-   
 
-       
-        const bookObject = {
-       
-      imageLinks: 
-       
-      { 
-        thumbnail: 
-       
-        ((`${this.props.book.imageLinks.thumbnail}
+      const bookObject = {
+
+          imageLinks:
+
+          {
+          thumbnail:
+
+            ((`${this.props.book.imageLinks.thumbnail}
           ? {this.props.book.imageLinks.thumbnail: ''}`)),
-           
-            
-      smallThumbnail: ((`${this.props.book.imageLinks.smallThumbnail}
+
+
+          smallThumbnail: 
+          ((`${this.props.book.imageLinks.smallThumbnail}
           ? {this.props.book.imageLinks.smallThumbnail: ''}`))
-             
+
+        }
       }
-       
-    }
+        
     
    
-
-
-
-// I learned this shorthand React.Fragment syntax on: https://getstream.io/blog/react-fragments/
 
 
 
@@ -58,7 +60,7 @@ class Book extends Component {
 
       <div>
       <React.Fragment>
-      {/*<div className="book-top" />  */}
+    
 
         <div className="book-title" />
           <Title title={this.props.book.title} />
@@ -75,19 +77,17 @@ class Book extends Component {
        
        
 
-
-
-
-
         <div className="book-shelf-changer" />
+        <Changer shelfChanger={this.props.book.shelf.shelfchanger} />
+         
 
-          <select
-            onChange={(e) => this.props.shelfChanger(
+            <select
+             onChange={(e) => this.props.shelfChanger(
               this.props.book, e.target.value
             )}
             value={this.props.book.shelf}
           >
-            <option value="move" disabled>Move to...</option>
+            <option value="move">Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
             <option value="read">Read</option>
@@ -105,27 +105,16 @@ class Book extends Component {
 export default Book;
 
 
+
+
+
 {/* 
-   
 
+// I learned this shorthand React.Fragment syntax on: https://getstream.io/blog/react-fragments/
 
-
-  lass Book extends Component {
-    render() {
-
-        const bookObject = {
-
-          imageLinks: {
-            thumbnail: ((`${this.props.book.imageLinks.thumbnail}
-          ? {this.props.book.imageLinks.thumbnail: ''}`))
-          }
-        }
-
-
-  
   imageLink: 
   two ways: either use img element with src attribute, then img src has to be exact without any additional methods, 
-  only ternary operator with literal. If you want to use div element
+  only ternary operator with literal. If one wants to use div element
   and set attribute style and object with {{cover: 'url....}}  literal here with ternary operator. 
 
   className="Cover"
