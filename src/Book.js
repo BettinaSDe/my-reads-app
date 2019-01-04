@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Cover from './Cover';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -28,7 +28,7 @@ return (
 
 
 
-class Book extends Component {
+class Book extends PureComponent {
   
   render() {
 
