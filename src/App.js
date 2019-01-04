@@ -1,4 +1,4 @@
-//import React from 'react';
+
 import React from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
@@ -15,26 +15,30 @@ import ErrorBoundary from './ErrorBoundary'
 class App extends React.Component {
     
 state = {  
-books: []  
+books: [] 
 }     
 
 
 
-componentDidMount() {
-BooksAPI.getAll().then((books) => {
-  this.setState({ books: books })
-})
+
+
+async componentDidMount() {
+  const books = await BooksAPI.getAll()
+  this.setState({books: books})
 }
 
 
 shelfChanger = (book, shelf) => {
-  BooksAPI.update(book, shelf);
-  book.shelf = shelf;
+    BooksAPI.update(book, shelf);
+    book.shelf = shelf;
+  
 
   this.setState(state => ({
-    books: state.books.filter(b =>b.id !== book.id).concat(book),
+    books: state.books.filter(b => b.id !== book.id).concat(book)
+        
   }));
-}
+  }
+
 
 
   render() {
@@ -46,8 +50,10 @@ shelfChanger = (book, shelf) => {
 <ErrorBoundary>
 <Route path="/" exact render={() => (
         <MainPage 
-        books={this.state.books}
+        
     shelfChanger={this.shelfChanger}
+    books = {this.state.books}
+    
           />
                 
       )} />
@@ -70,11 +76,12 @@ shelfChanger = (book, shelf) => {
 
  
       </div>
-    )
+    );
   }
 }
 
 export default App;
+
 
 
 
