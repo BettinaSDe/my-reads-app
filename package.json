@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "memory-cache": "^0.2.0",
     "node-cache": "^4.2.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
+    "react-delay": "^0.1.0",
     "react-dom": "^16.6.0",
     "react-loader-spinner": "^2.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5",
+    "react-scripts": "^2.1.3",
     "render-fragment": "^0.1.1",
-    "simple-cache-provider": "^0.10.0"
+    "simple-cache-provider": "^0.10.0",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
