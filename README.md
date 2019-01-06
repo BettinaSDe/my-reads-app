@@ -1,7 +1,7 @@
 
-# MyReads 
+# MyReads FRONT END WEB DEVEOPER PROJECT Susanne Bettina
 
-This is a Udacity REACT student project. The goal was to convert a static example of the CSS and HTML markup that may be used into a dynamic Create-React-App (CRA).
+This is a Udacity FRONT END WEB DEVEOPER student project. The goal was to convert a static example of the CSS and HTML markup that may be used into a dynamic Create-React-App (CRA).
 This is my development code for project 7 (*MyReads: A Book Lending App*) from Udacity's  [Front-End Nanodegree] program. It has not yet been built nor deployed with node.js.  
 Find starter code and more information [HERE
 ](https://github.com/udacity/reactnd-project-myreads-starter)
