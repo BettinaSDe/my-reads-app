@@ -17,7 +17,8 @@ searchedBooks: PropTypes.array.isRequired,
 
 state = {
   query: '',
-  searchedBooks: []
+  searchedBooks: [],
+  books: []
 }
 
 updateQuery = (query) => {
@@ -25,16 +26,28 @@ updateQuery = (query) => {
 }
 
 
+ 
+
+componentDidMount() {
+  BooksAPI.getAll().then(books => {
+    this.setState({
+      books
+    })
+  })
+  this.searchedBooks = this.state.searchedBooks
+}
+
+
 render() {
 
     const { books } = this.props
-    const { query } = this.state 
+    const { query } = this.state
+
+
+    let searchedBooks
     
 
- 
-    let searchedBooks 
-
-  if (query) {
+ if (query) {
     const match = new RegExp(escapeRegExp(query), 'i')
     searchedBooks = books.filter((book) => match.test(book.id))
 
@@ -46,20 +59,26 @@ render() {
 
 
 
+
     return (
    
-  
+      
       <div className="search-books">
 
          <div className="search-books-input-wrapper">           
-          <input         
-           div handler="onChange"
+          <ErrorBoundary>
+          <input  
+                
+            div handler="onChange"
             type="text" 
             placeholder="Search by title or author" 
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
-              />            
+               
+              />  
+              </ErrorBoundary>
         </div>
+       
         
         
         
@@ -73,13 +92,14 @@ render() {
 
               return (
             
-            
+            <ErrorBoundary>
             <li key={searchedBook.id}>
             <Book  
             book={searchedBook} 
             shelfChanger={this.props.shelfChanger}
              />
              </li>
+             </ErrorBoundary>
              );
              })
             }
