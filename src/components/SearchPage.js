@@ -44,16 +44,17 @@ render() {
     const { query } = this.state
 
 
+
     let searchedBooks
-    
-
- if (query) {
+     if (query) {
     const match = new RegExp(escapeRegExp(query), 'i')
-    searchedBooks = books.filter((book) => match.test(book.id))
-
+    searchedBooks = books.filter((book) => 
+    match.test(book.id))
+    
+    
   } else {
     searchedBooks = <ErrorBoundary />
-  }
+      }
 
   //searchedBooks.sort(sortBy('name'))
 
@@ -73,7 +74,8 @@ render() {
             type="text" 
             placeholder="Search by title or author" 
             value={query}
-            onChange={(event) => this.updateQuery(event.target.value)}
+            onChange={(event) => this.updateQuery(
+              event.target.value)}
                
               />  
               </ErrorBoundary>
