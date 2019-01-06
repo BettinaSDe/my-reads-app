@@ -12,11 +12,12 @@ import ErrorBoundary from './ErrorBoundary'
 class SearchPage extends Component {
 static propTypes = {
 searchedBooks: PropTypes.array.isRequired,
-shelfChanger: PropTypes.func.isRequired
+//shelfChanger: PropTypes.func.isRequired
 }
 
 state = {
-  query: ''
+  query: '',
+  searchedBooks: []
 }
 
 updateQuery = (query) => {
@@ -26,7 +27,7 @@ updateQuery = (query) => {
 
 render() {
 
-    const { books, shelfChanger } = this.props
+    const { books } = this.props
     const { query } = this.state 
     
 
@@ -49,16 +50,17 @@ render() {
    
   
       <div className="search-books">
+
          <div className="search-books-input-wrapper">           
           <input         
            div handler="onChange"
             type="text" 
             placeholder="Search by title or author" 
             value={query}
-            onChange={(event) => this.updateQuery(
-              event.target.value)}
+            onChange={(event) => this.updateQuery(event.target.value)}
               />            
         </div>
+        
         
         
       
@@ -67,17 +69,27 @@ render() {
      <div>
           <div className="search-books-results">
           <ol className="books-grid">
-            {searchedBooks.map(searchedBook => (<Book key={searchedBook.id} book={searchedBook} updateBookInfo={this.props.updateBookInfo} />))}
+            {this.state.searchedBooks.map(searchedBook => {
+
+              return (
+            
+            
+            <li key={searchedBook.id}>
+            <Book  
+            book={searchedBook} 
+            shelfChanger={this.props.shelfChanger}
+             />
+             </li>
+             );
+             })
+            }
           </ol>
         </div>
-        </div></div>
-      
-       
-      
-        
-     
-     
-      )
+        </div>
+        </div>
+            
+         
+      );
     }
 }
 
