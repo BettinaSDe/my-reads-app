@@ -2,10 +2,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import MainPage from './MainPage';
-import SearchPage from './SearchPage';
+import MainPage from './components/MainPage';
+import SearchPage from './components/SearchPage';
+//import BookShelf from './components/BookShelf';
 import './App.css';
-import ErrorBoundary from './ErrorBoundary'
+import ErrorBoundary from './components/ErrorBoundary'
 
 
 
@@ -15,7 +16,7 @@ import ErrorBoundary from './ErrorBoundary'
 class App extends React.Component {
     
 state = {  
-books: [] 
+books: []
 }     
 
 
@@ -53,6 +54,7 @@ shelfChanger = (book, shelf) => {
         
     shelfChanger={this.shelfChanger}
     books = {this.state.books}
+    bookshelf = {this.state.shelves}
     
           />
                 
