@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import PropTypes from 'prop-types'
 import Book from './Book'
 import escapeRegExp from 'escape-string-regexp'

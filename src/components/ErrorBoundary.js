@@ -1,6 +1,7 @@
 
 // code below primarily from reactjs.org/docs/error-boundaries.html with my adaptions 
-// reactiflux: timeout - > Don't set it in render, set it where you set this.state.errorInfo
+
+
 
 import React from 'react';
 
