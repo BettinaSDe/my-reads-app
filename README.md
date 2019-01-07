@@ -8,7 +8,7 @@ Find starter code and more information [HERE
 
 
 ---
-To start this Create-React-App (CRA): open this App with "node.js", enter "cd my-reads-bettinasde". 
+To start this Create-React-App (CRA): Download or clone this repository. Open this App with "node.js", enter "cd my-reads-app". 
 Once node.js serves this CRA folder, enter "npm install" for installing all project dependencies. Then start the development server with "npm start". You will need node's "RegExp" package for the Search page. Open the localhost:3000 to view the App in development mode on the local server. 
 
 ---
