@@ -1,121 +1,109 @@
-import React, {Component} from 'react'
+import React,{Component} from 'react'
 import * as BooksAPI from '../BooksAPI'
-import PropTypes from 'prop-types'
 import Book from './Book'
+import {Link} from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
-//import sortBy from 'types/sort-by'
 import ErrorBoundary from './ErrorBoundary'
 
 
 
 
-class SearchPage extends Component {
-static propTypes = {
-searchedBooks: PropTypes.array.isRequired,
-//shelfChanger: PropTypes.func.isRequired
-}
 
-state = {
-  query: '',
-  searchedBooks: [],
-  books: []
-}
-
-updateQuery = (query) => {
-  this.setState({query: query.trim() })
-}
-
-
+class SearchPage extends Component{
  
 
-componentDidMount() {
-  BooksAPI.getAll().then(books => {
-    this.setState({
-      books
-    })
-  })
-  this.searchedBooks = this.state.searchedBooks
-}
+  state = {
+    
+    books:[],
+    searchedBooks:[],
+    query: ''
+  }
 
-
-render() {
-
-    const { books } = this.props
-    const { query } = this.state
-
-
-
-    let searchedBooks
-     if (query) {
-    const match = new RegExp(escapeRegExp(query), 'i')
-    searchedBooks = books.filter((book) => 
-    match.test(book.id))
     
     
-  } else {
-    searchedBooks = <ErrorBoundary />
-      }
-
-  //searchedBooks.sort(sortBy('name'))
-
-
-
-
-    return (
    
-      
-      <div className="search-books">
+  
+render() {
+  const {query} = this.state;
+  const {searchedBooks} = this.props
 
-         <div className="search-books-input-wrapper">           
-          <ErrorBoundary>
-          <input  
-                
-            div handler="onChange"
-            type="text" 
-            placeholder="Search by title or author" 
-            value={query}
-            onChange={(event) => this.updateQuery(
-              event.target.value)}
-               
-              />  
-              </ErrorBoundary>
-        </div>
-       
-        
-        
-        
+let searchResults 
+if (query) {
+const match = new RegExp(escapeRegExp(query), 'i')
+searchResults = searchedBooks.filter((book) => match.test(book.id)
+)}
+ 
+
+
+    searchResults = (query) => {
+      if (query) {
+        BooksAPI.search(query).then((searchedBooks) => {
+         if (searchedBooks.error) {
+         //tbd
+            ; 
+          
+          } else {
+            this.setState({
+              searchedBooks: searchedBooks
+            });
+          }
+        })
+      } else {
+        this.setState({
+          searchedBooks: []
+        });
+      }
+    }
       
-             
+      
+    searchResults = (query) => {
+      this.setState({
+        query: query
+      })
+
+      this.updateSearchedBooks(query);
+    }
+      
+    
+ 
+
+    
+
+    return(
+     
+      <div className="search-books">
+      <ErrorBoundary>
+        <div className="search-books-bar">
+          <Link to="/" className="close-search">Close</Link>
+          <div className="search-books-input-wrapper">
+           <input type="text" placeholder="Search by title or author" onChange={this.bookQuery}/>
+            
+          </div>
+        </div>
+        </ErrorBoundary>
+        
        
-     <div>
-          <div className="search-books-results">
+       <ErrorBoundary>
+        <div className="search-books-results">
           <ol className="books-grid">
             {this.state.searchedBooks.map(searchedBook => {
-
               return (
-            
-            <ErrorBoundary>
-            <li key={searchedBook.id}>
-            <Book  
-            book={searchedBook} 
-            shelfChanger={this.props.shelfChanger}
-             />
-             </li>
-             </ErrorBoundary>
-             );
-             })
-            }
+              <Book key={searchedBook.id} book={searchedBook} shelfChanger={this.props.helfChanger} />
+            );})}
           </ol>
         </div>
-        </div>
-        </div>
-            
-         
+        </ErrorBoundary>
+      </div>
       );
+            }
+      
+      
+            
     }
-}
+
+export default SearchPage;
 
 
 
-export default SearchPage
+
 
