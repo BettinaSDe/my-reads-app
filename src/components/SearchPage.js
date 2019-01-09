@@ -25,9 +25,9 @@ class SearchPage extends Component{
   
 render() {
   const {query} = this.state;
-  const {searchedBooks} = this.props
+  const {searchedBooks} = this.props;
 
-let searchResults 
+let searchResults  
 if (query) {
 const match = new RegExp(escapeRegExp(query), 'i')
 searchResults = searchedBooks.filter((book) => match.test(book.id)
@@ -36,6 +36,12 @@ searchResults = searchedBooks.filter((book) => match.test(book.id)
 
 
     searchResults = (query) => {
+
+       this.setState({
+         query: query
+       })
+
+       this.updateSearchedBooks(query);
       if (query) {
         BooksAPI.search(query).then((searchedBooks) => {
          if (searchedBooks.error) {
@@ -55,19 +61,8 @@ searchResults = searchedBooks.filter((book) => match.test(book.id)
       }
     }
       
-      
-    searchResults = (query) => {
-      this.setState({
-        query: query
-      })
+       
 
-      this.updateSearchedBooks(query);
-    }
-      
-    
- 
-
-    
 
     return(
      
@@ -76,7 +71,7 @@ searchResults = searchedBooks.filter((book) => match.test(book.id)
         <div className="search-books-bar">
           <Link to="/" className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
-           <input type="text" placeholder="Search by title or author" onChange={this.bookQuery}/>
+           <input type="text" placeholder="Search by title or author" onChange={this.props.searchResults}/> 
             
           </div>
         </div>
@@ -88,7 +83,7 @@ searchResults = searchedBooks.filter((book) => match.test(book.id)
           <ol className="books-grid">
             {this.state.searchedBooks.map(searchedBook => {
               return (
-              <Book key={searchedBook.id} book={searchedBook} shelfChanger={this.props.helfChanger} />
+              <Book key={searchedBook.id} book={searchedBook} shelfChanger={this.props.shelfChanger} />
             );})}
           </ol>
         </div>
